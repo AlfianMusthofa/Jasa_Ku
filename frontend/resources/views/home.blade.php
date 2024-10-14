@@ -16,7 +16,7 @@
                         <p class="text-[#00ABE4] font-medium">Meet Every Need with Easy and Convenience</p>
                     </div>
                     <div class="mt-[20px]">
-                        <a href="/login" class="bg-[#00ABE4] p-[10px] text-[15px] text-white font-medium rounded-md">Get
+                        <a href="/loginPage" class="bg-[#00ABE4] p-[10px] text-[15px] text-white font-medium rounded-md">Get
                             Started</a>
                     </div>
                 </div>

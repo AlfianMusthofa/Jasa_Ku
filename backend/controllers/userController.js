@@ -1,4 +1,5 @@
 const User = require('../models/userModel')
+const bcrypt = require('bcrypt')
 
 const getAllUser = async (req, res) => {
 
@@ -52,7 +53,41 @@ const addUsers = async (req, res) => {
 
 }
 
+// Login
+const login = async (req, res) => {
+
+   try {
+
+      const { username, password } = req.body
+
+      if (!username || !password) {
+         return res.status(400).json({ msg: 'username and password is required!' })
+      }
+
+      const user = await User.findOne({ username })
+
+      if (!user) {
+         return res.status(404).json({ msg: 'User not found' });
+      }
+
+      const matchedPassword = await bcrypt.compare(password, user.password)
+
+      if (!matchedPassword) {
+         return res.status(401).json({ msg: 'Invalid password!' })
+      }
+
+      res.json({ msg: 'Login successful', user: { email: user.email } });
+
+   } catch (error) {
+
+      res.status(500).json({ error: error.message });
+
+   }
+
+}
+
 module.exports = {
    getAllUser,
    addUsers,
+   login
 }

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\homeController;
+use App\Http\Controllers\LoginController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -16,9 +17,16 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [homeController::class, 'index']);
+Route::post('/login', [LoginController::class, 'index']);
 
-Route::get('/login', function () {
+Route::get('/loginPage', function () {
    return view('login', [
       "title" => "Login"
+   ]);
+});
+
+Route::get('/signup', function () {
+   return view('signup', [
+      "title" => 'Sign Up'
    ]);
 });
