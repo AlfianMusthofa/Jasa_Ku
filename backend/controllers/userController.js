@@ -86,8 +86,29 @@ const login = async (req, res) => {
 
 }
 
+const deleteUser = async (req, res) => {
+
+   try {
+
+      const userId = req.params.id
+
+      const deletedUser = await User.findByIdAndDelete(userId)
+
+      if (!deleteUser) {
+         res.status(404).json({ msg: 'User not found!' })
+      }
+
+      res.status(200).json({ msg: "User has been deleted!" })
+
+   } catch (error) {
+      res.status(500).json({ msg: error.message })
+   }
+
+}
+
 module.exports = {
    getAllUser,
    addUsers,
-   login
+   login,
+   deleteUser
 }
