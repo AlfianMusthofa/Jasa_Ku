@@ -13,4 +13,3 @@ function toggleGender(selected, other) {
 
 gender1.addEventListener('click', () => toggleGender(gender1, gender2));
 gender2.addEventListener('click', () => toggleGender(gender2, gender1));
-

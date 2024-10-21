@@ -21,12 +21,12 @@ const addUsers = async (req, res) => {
    try {
 
       // Extract data from request body
-      const { username, email, password } = req.body;
+      const { username, password, phoneNumber, gender, dateBorn } = req.body;
 
       // Check if email user already exist in database
-      const existingUser = await User.findOne({ email })
+      const existingUser = await User.findOne({ phoneNumber })
       if (existingUser) {
-         return res.status(400).json({ msg: "Email already exist!" })
+         return res.status(400).json({ msg: "Phone number already exist!" })
       }
 
       // Generate salt and hash the password
@@ -36,8 +36,10 @@ const addUsers = async (req, res) => {
       // Create new user object with hashed password
       const newUser = new User({
          username,
-         email,
-         password: hashedPassword
+         password: hashedPassword,
+         phoneNumber,
+         gender,
+         dateBorn
       })
 
       // save the user into database
@@ -76,7 +78,7 @@ const login = async (req, res) => {
          return res.status(401).json({ msg: 'Invalid password!' })
       }
 
-      res.json({ msg: 'Login successful', user: { email: user.email } });
+      res.json({ msg: 'Login successful', user: { username: user.username } });
 
    } catch (error) {
 

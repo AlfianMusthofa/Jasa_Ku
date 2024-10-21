@@ -3,16 +3,19 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Http;
 
-class LoginController extends Controller
+class SignupController extends Controller
 {
    function index(Request $request)
    {
-      $response = Http::post('http://localhost:3000/users/login', [
+
+      $response = Http::post('http://localhost:3000/users', [
          "username" => $request->username,
-         "password" => $request->password
+         "password" => $request->password,
+         "phoneNumber" => $request->phonenumber,
+         "dateBorn" => $request->date,
+         "gender" => $request->gender
       ]);
 
       if ($response->successful()) {

@@ -4,7 +4,7 @@
     <div class="bg-[#E9F1FA] w-[100%] h-[100vh] flex justify-center items-center">
         <div class="border bg-[#00ABE4] p-[16px] shadow-md rounded-tl-[10px] rounded-br-[10px]">
             <h1 class="text-center font-semibold text-white text-[18px] mb-[8px]">Sign Up</h1>
-            <form action="/" method="post" class="flex flex-col gap-[8px] w-[330px]">
+            <form action="/signup" method="post" class="flex flex-col gap-[8px] w-[330px]">
                 @csrf
                 <label for="username" class="text-[12px] text-white">Username</label>
                 <input type="text" name="username" id="username"
@@ -34,6 +34,10 @@
                     class="text-[13px] py-[9px] font-bold bg-white text-[#00ABE4] rounded-tl-[7px] rounded-br-[7px]">Sign
                     Up</button>
             </form>
+            <p class="text-[11px] mt-5 text-center text-white">Have an account ? <a href="/loginPage"
+                    class="font-semibold">Sign
+                    In</a>
+            </p>
         </div>
     </div>
 @endsection

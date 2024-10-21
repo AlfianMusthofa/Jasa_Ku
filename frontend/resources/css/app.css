@@ -19,3 +19,23 @@
    background-color: white;
    color: #00ABE4;
 }
+
+.navlink img {
+   width: 18px;
+}
+
+.banner {
+   background: url(C:\x_code\Jasa_ku\frontend\public\assets\banner.jpg);
+   height: 450px;
+   background-size: cover;
+   background-position: center;
+   background-repeat: no-repeat;
+   border-radius: 14px;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+}
+
+.hero .banner .content {
+   border: none;
+}
