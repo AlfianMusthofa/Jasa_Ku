@@ -39,3 +39,36 @@
 .hero .banner .content {
    border: none;
 }
+
+.categories .row .col {
+   padding: 10px;
+   border: 1px solid rgba(0, 0, 0, 0.3);
+   border-radius: 5px;
+   font-weight: 500;
+   box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+}
+
+.categories .row .col p {
+   margin-top: 10px;
+   font-size: 13px;
+}
+
+.categories .row .col img {
+   height: 22px;
+}
+
+.popular-service .row {
+   display: flex;
+   margin-top: 10px;
+}
+
+.popular-service .row .box {
+   border: 1px solid rgba(0, 0, 0, 0.3);
+   border-radius: 7px;
+   padding: 7px;
+}
+
+.popular-service .row .box p {
+   font-size: 14px;
+   margin: 5px 0 10px;
+}
