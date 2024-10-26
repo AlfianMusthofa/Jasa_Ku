@@ -16,6 +16,14 @@ class LoginController extends Controller
       ]);
 
       if ($response->successful()) {
+
+         $userData = $response->json();
+
+         if (isset($userData['user']['username']) || isset($userData['user']['id'])) {
+            $request->session()->put('username', $userData['user']['username']);
+            $request->session()->put('id', $userData['user']['id']);
+         }
+
          return redirect('/service');
       } else {
          return $response->status();

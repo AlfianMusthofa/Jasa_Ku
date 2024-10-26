@@ -14,16 +14,7 @@
             </div>
         </div>
     </div>
-    <div class="border">
-        <div class=" container mx-auto flex justify-between items-center py-[20px]">
-            <a href="#">JasaKu</a>
-            <div class="navlink flex items-center gap-[18px]">
-                <a href="#"><img src="assets/icons/history.png" alt=""></a>
-                <a href="#"><img src="assets/icons/messenger.png" alt=""></a>
-                <a href="#"><img src="assets/icons/user.png" alt=""></a>
-            </div>
-        </div>
-    </div>
+    @include('components.navbar2')
     <div class="hero border py-[20px]">
         <div class="banner container mx-auto">
             <div class="content flex flex-col w-[500px] gap-[20px]">
@@ -70,29 +61,28 @@
             </div>
         </div>
     </div>
-    <div class="popular-service border mt-[30px]">
+    <div class="services mt-[30px]">
         <div class="container mx-auto">
-            <h1 class="text-[20px] font-semibold">Popular Services</h1>
-            <div class="row flex gap-[10px]">
-                <div class="box">
-                    <div class="py-[8px]">
-                        <p>Website Development</p>
+            <p class="text-[20px] font-semibold">Popular Services</p>
+        </div>
+        <div class="row container mx-auto py-[14px] flex gap-[10px]">
+            <a href="#">
+                <div class="box border w-[205px] rounded-[7px]">
+                    <img src="assets/card.jpg" alt="" class="rounded-tr-[7px] rounded-tl-[7px]">
+                    <div class="p-[7px] mt-[5px]">
+                        <p class="text-[14px] font-semibold line-clamp-2">I will do professional and engaging video editing
+                            for youtube</p>
+                        <div class="my-[8px] flex gap-[8px] items-center">
+                            <img src="assets/icons/star.png" alt="" class="w-[17px]">
+                            <div class="flex items-center text-[13px] gap-[3px] font-medium">
+                                <p>4.9</p>
+                                <p>(450)</p>
+                            </div>
+                        </div>
+                        <p class="text-[15px] font-semibold">From $60</p>
                     </div>
-                    <img src="assets/cat/cat (1).png" alt="">
                 </div>
-                <div class="box">
-                    <div class="py-[8px]">
-                        <p>Website Development</p>
-                    </div>
-                    <img src="assets/cat/cat (2).png" alt="">
-                </div>
-                <div class="box">
-                    <div class="py-[8px]">
-                        <p>Website Development</p>
-                    </div>
-                    <img src="assets/cat/cat (3).png" alt="">
-                </div>
-            </div>
+            </a>
         </div>
     </div>
 @endsection
