@@ -95,3 +95,8 @@
    background-color: #00ABE4;
    color: white;
 }
+
+.footer .row .col a {
+   font-size: 15px;
+   color: rgb(126, 126, 126);
+}

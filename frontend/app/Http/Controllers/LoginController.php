@@ -19,7 +19,7 @@ class LoginController extends Controller
 
          $userData = $response->json();
 
-         if (isset($userData['user']['username']) || isset($userData['user']['id'])) {
+         if (isset($userData['user']['username']) && isset($userData['user']['id'])) {
             $request->session()->put('username', $userData['user']['username']);
             $request->session()->put('id', $userData['user']['id']);
          }
@@ -28,5 +28,12 @@ class LoginController extends Controller
       } else {
          return $response->status();
       }
+   }
+
+   function logout(Request $request)
+   {
+
+      $request->session()->flush();
+      return redirect('/loginPage');
    }
 }

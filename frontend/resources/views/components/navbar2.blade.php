@@ -11,8 +11,8 @@
                 </button>
                 <div id="myDropdown"
                     class="dropdown-content hidden border absolute w-[130px] right-[2px] top-[47px] bg-white z-[1]">
-                    <a href="#">Dashboard</a>
-                    <a href="#">Log Out</a>
+                    <a href="/dashboard">Dashboard</a>
+                    <a href="/logout">Log Out</a>
                 </div>
             </div>
         </div>
