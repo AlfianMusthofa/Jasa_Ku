@@ -12,4 +12,11 @@ class DashboardController extends Controller
          "title" => "Your Dashboard"
       ]);
    }
+
+   function addProductPage()
+   {
+      return view('addProject', [
+         "title" => session('username') . " | Create a new Project"
+      ]);
+   }
 }

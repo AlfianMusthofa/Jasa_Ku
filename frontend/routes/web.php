@@ -3,6 +3,7 @@
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\homeController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\ProductController;
 use App\Http\Controllers\serviceController;
 use App\Http\Controllers\SignupController;
 use App\Http\Controllers\UserController;
@@ -25,6 +26,8 @@ Route::post('/signup', [SignupController::class, 'index']);
 Route::get('/service', [serviceController::class, 'index']);
 Route::get('/logout', [LoginController::class, 'logout']);
 Route::get('/dashboard', [DashboardController::class, 'index']);
+Route::get('/dashboard/addProductPage', [DashboardController::class, 'addProductPage']);
+Route::get('/dashboard/productPage', [ProductController::class, 'index']);
 
 Route::get('/loginPage', function () {
    return view('login', [

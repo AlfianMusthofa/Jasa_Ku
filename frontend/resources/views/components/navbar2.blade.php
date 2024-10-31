@@ -1,12 +1,12 @@
 <div class="border" id="navbar">
     <div class="container mx-auto flex justify-between items-center py-[20px]">
-        <a href="#">JasaKu</a>
+        <a href="/service">JasaKu</a>
         <div class="navlink flex items-center gap-[18px]">
-            <a href="#"><img src="assets/icons/history.png" alt=""></a>
-            <a href="#"><img src="assets/icons/messenger.png" alt=""></a>
+            <a href="#"><img src="{{ asset('assets/icons/history.png') }}" alt=""></a>
+            <a href="#"><img src="{{ asset('assets/icons/messenger.png') }}" alt=""></a>
             <div class="dropdown cursor-pointer relative block">
                 <button onclick="myFunction()" class="dropbtn flex items-center gap-[7px]">
-                    <img src="assets/icons/user.png" alt="">
+                    <img src="{{ asset('assets/icons/user.png') }}" alt="">
                     <p class="text-[14px]">{{ session('username') }}</p>
                 </button>
                 <div id="myDropdown"

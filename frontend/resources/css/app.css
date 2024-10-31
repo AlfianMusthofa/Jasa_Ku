@@ -100,3 +100,25 @@
    font-size: 15px;
    color: rgb(126, 126, 126);
 }
+
+.gigs .addGigs {
+   border: 1px dashed black;
+}
+
+.gigs .addGigs img {
+   width: 50px;
+   height: 50px;
+}
+
+.gig .row img {
+   width: 100px;
+   height: 100px;
+}
+
+.orderBtn {
+   border: 1px solid black;
+}
+
+.buyBox {
+   border: 1px solid #c6c6c6;
+}
