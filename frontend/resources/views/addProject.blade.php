@@ -84,6 +84,11 @@
 
             <input type="hidden" name="user_id" value="{{ session('id') }}">
             <input type="hidden" name="phoneNumber" value="{{ session('phoneNumber') }}">
+            <input type="hidden" name="user_username" value="{{ session('username') }}">
+            <input type="hidden" name="user_description" value="{{ session('userDescription') }}">
+            <input type="hidden" name="user_languages" value="Indonesia">
+            <input type="hidden" name="user_location" value="Indonesia">
+            <input type="hidden" name="user_memberSince" value="2024">
 
             <div>
                 <button type="submit"

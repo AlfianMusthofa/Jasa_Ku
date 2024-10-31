@@ -24,7 +24,7 @@ class DashboardController extends Controller
    function saveProduct(Request $request)
    {
 
-      ddd($request);
+      // dd($request->file('image')->store('post-images'));
 
       $response = Http::post('http://localhost:3000/gigs', [
          "user_id" => $request->user_id,
@@ -33,8 +33,19 @@ class DashboardController extends Controller
          "project_duration" => $request->duration,
          "project_cost" => $request->price,
          "project_description" => $request->description,
-         "image" => $request->image,
-         "phoneNumber" => $request->phoneNumber
+         "image" => $request->file('image')->store('post-images'),
+         "phoneNumber" => $request->phoneNumber,
+         "user_username" => $request->user_username,
+         "user_description" => $request->user_description,
+         "user_languages" => $request->user_languages,
+         "user_location" => $request->user_location,
+         "user_memberSince" => $request->user_memberSince
       ]);
+
+      if ($response->successful()) {
+         return redirect('/dashboard');
+      } else {
+         return $response->status();
+      }
    }
 }
