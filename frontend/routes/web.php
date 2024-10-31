@@ -28,6 +28,7 @@ Route::get('/logout', [LoginController::class, 'logout']);
 Route::get('/dashboard', [DashboardController::class, 'index']);
 Route::get('/dashboard/addProductPage', [DashboardController::class, 'addProductPage']);
 Route::get('/dashboard/productPage', [ProductController::class, 'index']);
+Route::post('/saveProduct', [DashboardController::class, 'saveProduct']);
 
 Route::get('/loginPage', function () {
    return view('login', [

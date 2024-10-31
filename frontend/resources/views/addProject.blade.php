@@ -3,7 +3,10 @@
 @section('container')
     @include('components.navbar2')
     <div class="w-full flex justify-center items-center bg-[#f7f7f7]">
-        <form class="w-[777px] my-[10px] flex flex-col gap-[15px]">
+        <form method="post" action="/saveProduct" class="w-[777px] my-[10px] flex flex-col gap-[15px]"
+            enctype="multipart/form-data">
+
+            @csrf
 
             {{-- Overview --}}
             <div class="row flex flex-col gap-[24px] border p-[10px] bg-white">
@@ -25,7 +28,7 @@
                         class="border p-[5px] text-[14px] w-full" placeholder="I will do.."></textarea>
                 </div>
 
-                {{-- product Category --}}
+                {{-- product Industry --}}
                 <div class="row flex gap-[15px] items-center">
                     <div class="col">
                         <div class="w-[242px]">
@@ -33,6 +36,7 @@
                             <p class="text-[13px]">Choose the category and sub-category most suitable for your Project.</p>
                         </div>
                     </div>
+                    <input type="text" name="industry" id="industry" class="border text-[14px] p-[5px]">
                 </div>
 
                 {{-- Project Duration --}}
@@ -40,8 +44,7 @@
                     <div class="col w-[242px]">
                         <p class="text-[14px] font-medium">Project Duration</p>
                     </div>
-                    <button class="text-[13px] border p-[7px] rounded-md w-[150px]" id="durationProjectBtn">Select
-                        duration</button>
+                    <input type="text" name="duration" id="duration" class="border text-[14px] p-[5px]">
                 </div>
 
                 {{-- Pricing --}}
@@ -76,16 +79,15 @@
                     </div>
                     <p class="text-[14px] font-medium">Images</p>
                 </div>
-                <div class="row flex gap-[10px]">
-                    <div class="col border w-[150px]">
-                        <img src="{{ asset('assets/banner.jpg') }}" alt="">
-                    </div>
-                    <div class="projectImage border w-[150px] flex justify-center items-center flex-col text-[12px] gap-[5px] cursor-pointer"
-                        id="projectImage">
-                        <img src="{{ asset('assets/icons/plus.png') }}" alt="" class="w-[20px]">
-                        <p>Add image</p>
-                    </div>
-                </div>
+                <input type="file" name="image" id="image">
+            </div>
+
+            <input type="hidden" name="user_id" value="{{ session('id') }}">
+            <input type="hidden" name="phoneNumber" value="{{ session('phoneNumber') }}">
+
+            <div>
+                <button type="submit"
+                    class="float-right text-[15px] px-[30px] py-[6px] bg-blue-400 rounded-[3px]">Save</button>
             </div>
         </form>
     </div>
