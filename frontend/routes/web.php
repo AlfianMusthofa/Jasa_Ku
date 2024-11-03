@@ -27,8 +27,11 @@ Route::get('/service', [serviceController::class, 'index']);
 Route::get('/logout', [LoginController::class, 'logout']);
 Route::get('/dashboard', [DashboardController::class, 'index']);
 Route::get('/dashboard/addProductPage', [DashboardController::class, 'addProductPage']);
-Route::get('/dashboard/productPage', [ProductController::class, 'index']);
+Route::get('/dashboard/productPage/{id}', [ProductController::class, 'index']);
 Route::post('/saveProduct', [DashboardController::class, 'saveProduct']);
+Route::get('/service/productDetail/{id}', [ProductController::class, 'productDetail']);
+Route::get('/dashboard/userEdit/{id}', [DashboardController::class, 'userEditPage']);
+Route::post('/dashboard/userEdit/{id}', [DashboardController::class, 'updateUser']);
 
 Route::get('/loginPage', function () {
    return view('login', [

@@ -66,23 +66,20 @@
             <p class="text-[20px] font-semibold">Popular Services</p>
         </div>
         <div class="row container mx-auto py-[14px] flex gap-[10px]">
-            <a href="#">
-                <div class="box border w-[205px] rounded-[7px]">
-                    <img src="assets/card.jpg" alt="" class="rounded-tr-[7px] rounded-tl-[7px]">
-                    <div class="p-[7px] mt-[5px]">
-                        <p class="text-[14px] font-semibold line-clamp-2">I will do professional and engaging video editing
-                            for youtube</p>
-                        <div class="my-[8px] flex gap-[8px] items-center">
-                            <img src="assets/icons/star.png" alt="" class="w-[17px]">
-                            <div class="flex items-center text-[13px] gap-[3px] font-medium">
-                                <p>4.9</p>
-                                <p>(450)</p>
-                            </div>
+            @foreach ($products as $product)
+                <a href="/service/productDetail/{{ $product['_id'] }}">
+                    <div class="box border w-[205px] rounded-[7px]">
+                        <img src="{{ asset('storage/' . $product['image']) }}" alt=""
+                            class="rounded-tr-[7px] rounded-tl-[7px] h-[135px] w-[203px]">
+                        <div class="p-[7px] mt-[5px]">
+                            <p class="text-[14px] font-medium line-clamp-2">{{ $product['project_name'] }}</p>
+                            <p class="text-[12px] line-clamp-1 mt-[5px] text-gray-400">{{ $product['project_description'] }}
+                            </p>
+                            <p class="text-[13px] font-medium text-end mt-[5px]">From Rp.{{ $product['project_cost'] }}</p>
                         </div>
-                        <p class="text-[15px] font-semibold">From $60</p>
                     </div>
-                </div>
-            </a>
+                </a>
+            @endforeach
         </div>
     </div>
 @endsection

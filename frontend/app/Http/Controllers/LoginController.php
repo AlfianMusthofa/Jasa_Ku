@@ -30,6 +30,7 @@ class LoginController extends Controller
             $request->session()->put('userLanguages', $userData['user']['languages']);
             $request->session()->put('memberYear', $userData['user']['memberSince']);
             $request->session()->put('phoneNumber', $userData['user']['phoneNumber']);
+            $request->session()->put('userCountry', $userData['user']['country']);
          }
 
          return redirect('/service');

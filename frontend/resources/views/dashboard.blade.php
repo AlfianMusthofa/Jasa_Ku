@@ -10,7 +10,8 @@
                     {{-- Profile --}}
                     <div class="col bg-white">
                         <div class="border flex flex-col justify-center items-center p-[15px]">
-                            <img src="assets/icons/user.png" alt="" class="border w-[150px] rounded-full">
+                            <img src="{{ session('userImage') ? asset('storage/' . session('userImage')) : asset('assets/icons/user.png') }}"
+                                alt="" class="border w-[150px] h-[150px] rounded-full">
                             <div class="flex items-center text-[17px] my-[20px]">
                                 <p>@</p>
                                 <p>{{ session('username') }}</p>
@@ -19,7 +20,7 @@
                                 <div class="row">
                                     <div class="col flex justify-between items-center">
                                         <p>From</p>
-                                        <p>Indonesia</p>
+                                        <p>{{ session('userCountry') }}</p>
                                     </div>
                                 </div>
                                 <div class="row">
@@ -52,13 +53,11 @@
                     <div class="border p-[15px] bg-white">
                         <p class="text-[14px] font-semibold">Languages</p>
                         <div class="text-[13px] mt-[10px]">
-                            @if (session('userLanguages') && count(session('userLanguages')) > 0)
-                                @foreach (session('userLanguages') as $language)
-                                    <p>{{ $language }}</p>
-                                @endforeach
+                            @if (session('userLanguages'))
+                                <p>{{ session('userLanguages') }}</p>
                             @else
-                                <p class="text-[13px] text-gray-400 italic">No languages available. Please add your
-                                    languages in
+                                <p class="text-[13px] text-gray-400 mt-[10px] italic">No language available. Please add your
+                                    description in
                                     your profile.</p>
                             @endif
                         </div>
@@ -93,7 +92,7 @@
                         </div>
                     </div>
 
-                    <a href="#"
+                    <a href="/dashboard/userEdit/{{ session('id') }}"
                         class="text-[13px] border text-center py-[4px] hover:bg-[#00ABE4] hover:text-white">Edit
                         preferences</a>
                 </div>
@@ -101,28 +100,27 @@
                 {{-- Right --}}
                 <div class="gigs col w-full">
                     <div class="row grid grid-cols-2 gap-[10px]">
-                        <a href="/dashboard/productPage">
-                            <div class="gig col border flex gap-[5px] flex-col bg-white p-[7px]">
-                                <div class="row flex gap-[10px] items-center">
-                                    <img src="assets/card.jpg" alt="">
-                                    <p class="text-[14px] font-medium">I will edit your youtube & shorts videos</p>
+                        @foreach ($projects as $project)
+                            <a href="/dashboard/productPage/{{ $project['_id'] }}">
+                                <div class="gig col border flex gap-[5px] flex-col bg-white p-[7px] min-h-[187px]">
+                                    <div class="row flex gap-[10px] items-center">
+                                        <img src="{{ asset('storage/' . $project['image']) }}" alt="">
+                                        {{-- Project title --}}
+                                        <p class="text-[14px] font-medium">{{ $project['project_name'] }}</p>
+                                    </div>
+                                    <div class="row">
+                                        <p class="text-[12px] line-clamp-2 mt-[3px] text-gray-400">
+                                            {{ $project['project_description'] }}</p>
+                                    </div>
+                                    <div class="flex items-center gap-2 text-[12px] font-medium mt-[5px]">
+                                        <p>Starting at</p>
+                                        <p>Rp.{{ $project['project_cost'] }}</p>
+                                    </div>
                                 </div>
-                                <div class="row">
-                                    <p class="text-[12px] line-clamp-3 mt-[3px] text-gray-400">Lorem ipsum dolor sit amet
-                                        consectetur,
-                                        adipisicing
-                                        elit. Sint, asperiores. Aut harum, maiores, praesentium sunt itaque voluptate
-                                        tenetur, expedita neque repellat deserunt natus magni illo vitae! Dolorem aspernatur
-                                        veniam incidunt?</p>
-                                </div>
-                                <div class="flex items-center gap-2 text-[12px] font-medium mt-[5px]">
-                                    <p>Starting at</p>
-                                    <p>Rp.100.000</p>
-                                </div>
-                            </div>
-                        </a>
+                            </a>
+                        @endforeach
                         <a href="/dashboard/addProductPage">
-                            <div class="addGigs h-full flex flex-col gap-[10px] justify-center items-center bg-white">
+                            <div class="addGigs h-[187px] flex flex-col gap-[10px] justify-center items-center bg-white">
                                 <img src="assets/icons/plus.png" alt="">
                                 <h1 class="text-[12px]">Add new Project</h1>
                             </div>

@@ -9,8 +9,13 @@ class DashboardController extends Controller
 {
    function index()
    {
+
+      $response = Http::get('http://localhost:3000/gigs/' . session('id'));
+      $projects = $response->json();
+
       return view('dashboard', [
-         "title" => "Your Dashboard"
+         "title" => "Your Dashboard",
+         "projects" => $projects
       ]);
    }
 
@@ -23,8 +28,6 @@ class DashboardController extends Controller
 
    function saveProduct(Request $request)
    {
-
-      // dd($request->file('image')->store('post-images'));
 
       $response = Http::post('http://localhost:3000/gigs', [
          "user_id" => $request->user_id,
@@ -43,6 +46,42 @@ class DashboardController extends Controller
       ]);
 
       if ($response->successful()) {
+         return redirect('/dashboard');
+      } else {
+         return $response->status();
+      }
+   }
+
+   function userEditPage()
+   {
+      return view('userEditPage', [
+         "title" => session('username') . " profile edit"
+      ]);
+   }
+
+   function updateUser(Request $request)
+   {
+      $response = Http::patch('http://localhost:3000/users/' . session('id'), [
+         "username" => $request->username,
+         "phoneNumber" => $request->phoneNumber,
+         "user_description" => $request->description,
+         "user_country" => $request->user_country,
+         "user_languages" => $request->user_languages,
+         "password" => $request->password ? $request->password : "",
+         "user_image" => $request->file('image')->store('post-images'),
+      ]);
+
+      if ($response->successful()) {
+
+         session([
+            "username" => $request->username,
+            "phoneNumber" => $request->phoneNumber,
+            "userDescription" => $request->description,
+            "userLanguages" => $request->user_languages,
+            "userCountry" => $request->user_country,
+            "userImage" => $request->file('image')->store('post-images'),
+         ]);
+
          return redirect('/dashboard');
       } else {
          return $response->status();

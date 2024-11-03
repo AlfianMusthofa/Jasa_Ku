@@ -11,11 +11,10 @@
                     <p class="text-[25px] font-medium">{{ $project['project_name'] }}</p>
                     <div class="row flex gap-[10px] items-center">
                         <div class="col">
-                            <img src="{{ asset('storage/' . session('userImage')) }}" alt=""
-                                class="w-[60px] h-[60px] rounded-full">
+                            <img src="{{ asset('assets/card.jpg') }}" alt="" class="w-[60px] h-[60px] rounded-full">
                         </div>
                         <div class="col">
-                            <p class="text-[16px]">{{ session('username') }}</p>
+                            <p class="text-[16px]">{{ $project['user_username'] }}</p>
                             <div class="row flex gap-[5px] items-center">
                                 <img src="{{ asset('assets/icons/star.png') }}" alt="" class="w-[15px]">
                                 <img src="{{ asset('assets/icons/star.png') }}" alt="" class="w-[15px]">
@@ -27,7 +26,7 @@
                 </div>
 
                 {{-- Image --}}
-                <img src="{{ asset('storage/' . $project['image']) }}" alt="" class="mt-[20px] w-[683px] h-[455px]">
+                <img src="{{ asset('storage/' . $project['image']) }}" alt="" class="mt-[20px] w-[683px] h-[359px]">
 
                 {{-- Project Desc --}}
                 <div class="mt-[20px]">
@@ -46,11 +45,11 @@
                         <div class="row">
                             <div>
                                 <p class="text-[16px] text-[#777981]">From</p>
-                                <p class="font-medium text-[14px]">{{ session('userCountry') }}</p>
+                                <p class="font-medium text-[14px]">Indonesia</p>
                             </div>
                             <div class="mt-[10px]">
                                 <p class="text-[16px] text-[#777981]">Languages</p>
-                                <p class="font-medium text-[14px]">{{ session('userLanguages') }}</p>
+                                <p class="font-medium text-[14px]">Indonesia</p>
                             </div>
                         </div>
                         <div class="row">
@@ -61,7 +60,7 @@
                         </div>
                     </div>
                     <div>
-                        <p class="text-[14px] pt-[15px] text-[#adaeb2]">{{ session('userDescription') }}</p>
+                        <p class="text-[14px] pt-[15px] text-[#adaeb2]">{{ $project['user_description'] }}</p>
                     </div>
                 </div>
             </div>

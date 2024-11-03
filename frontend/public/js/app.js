@@ -32,3 +32,6 @@ window.onclick = function (event) {
       }
    }
 }
+
+const durationBtn = document.getElementById('durationBtn')
+durationBtn.addEventListener('click', () => console.log('Pressed'))
