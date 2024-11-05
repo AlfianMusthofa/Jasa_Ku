@@ -67,7 +67,11 @@
             </div>
             {{-- Kanan --}}
             <div class="col w-[500px]">
-                <div class="buyBox p-[10px] sticky">
+                <div class="mb-[10px]">
+                    <a href="/projectEdit/{{ $project['_id'] }}"><img src="{{ asset('assets/icons/pen.png') }}"
+                            alt="" class="w-[25px]"></a>
+                </div>
+                <div class="buyBox p-[10px]">
                     <div class="flex justify-between items-center">
                         <div>
                             <p class="text-[14px] font-medium">Basic</p>

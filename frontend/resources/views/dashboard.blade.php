@@ -112,9 +112,11 @@
                                         <p class="text-[12px] line-clamp-2 mt-[3px] text-gray-400">
                                             {{ $project['project_description'] }}</p>
                                     </div>
-                                    <div class="flex items-center gap-2 text-[12px] font-medium mt-[5px]">
-                                        <p>Starting at</p>
-                                        <p>Rp.{{ $project['project_cost'] }}</p>
+                                    <div class="flex items-center gap-2 text-[12px] font-medium mt-[5px] justify-between">
+                                        <div class="flex items-center gap-[5px]">
+                                            <p>Starting at</p>
+                                            <p>Rp.{{ $project['project_cost'] }}</p>
+                                        </div>
                                     </div>
                                 </div>
                             </a>

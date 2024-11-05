@@ -32,6 +32,9 @@ Route::post('/saveProduct', [DashboardController::class, 'saveProduct']);
 Route::get('/service/productDetail/{id}', [ProductController::class, 'productDetail']);
 Route::get('/dashboard/userEdit/{id}', [DashboardController::class, 'userEditPage']);
 Route::post('/dashboard/userEdit/{id}', [DashboardController::class, 'updateUser']);
+Route::delete('/delete/{id}', [ProductController::class, 'deleteProject']);
+Route::get('/projectEdit/{id}', [ProductController::class, 'updateProjectPage']);
+Route::post('/projectEdit/{id}', [ProductController::class, 'updateProject']);
 
 Route::get('/loginPage', function () {
    return view('login', [

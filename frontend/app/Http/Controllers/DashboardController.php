@@ -61,6 +61,15 @@ class DashboardController extends Controller
 
    function updateUser(Request $request)
    {
+
+      $oldImage = session('userImage');
+
+      if ($request->hasFile('image')) {
+         $oldImage = $request->file('image')->store('post-images');
+      } else {
+         $imagePath = $oldImage;
+      }
+
       $response = Http::patch('http://localhost:3000/users/' . session('id'), [
          "username" => $request->username,
          "phoneNumber" => $request->phoneNumber,
@@ -68,7 +77,7 @@ class DashboardController extends Controller
          "user_country" => $request->user_country,
          "user_languages" => $request->user_languages,
          "password" => $request->password ? $request->password : "",
-         "user_image" => $request->file('image')->store('post-images'),
+         "user_image" => $imagePath,
       ]);
 
       if ($response->successful()) {
@@ -79,7 +88,7 @@ class DashboardController extends Controller
             "userDescription" => $request->description,
             "userLanguages" => $request->user_languages,
             "userCountry" => $request->user_country,
-            "userImage" => $request->file('image')->store('post-images'),
+            "userImage" => $imagePath,
          ]);
 
          return redirect('/dashboard');
