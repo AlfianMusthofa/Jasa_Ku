@@ -11,7 +11,8 @@
                     <p class="text-[25px] font-medium">{{ $project['project_name'] }}</p>
                     <div class="row flex gap-[10px] items-center">
                         <div class="col">
-                            <img src="{{ asset('assets/card.jpg') }}" alt="" class="w-[60px] h-[60px] rounded-full">
+                            <img src="{{ asset('storage/' . $project['user_image']) }}" alt=""
+                                class="w-[60px] h-[60px] rounded-full">
                         </div>
                         <div class="col">
                             <p class="text-[16px]">{{ $project['user_username'] }}</p>
@@ -26,7 +27,18 @@
                 </div>
 
                 {{-- Image --}}
-                <img src="{{ asset('storage/' . $project['image']) }}" alt="" class="mt-[20px] w-[683px] h-[359px]">
+                <div class="slideshow-container">
+                    <div class="mySlides fade">
+                        <img src="{{ asset('storage/' . $project['image']) }}" alt=""
+                            class="mt-[20px] w-[683px] h-[359px]">
+                    </div>
+                    <div class="mySlides fade">
+                        <img src="{{ asset('storage/' . $project['image2']) }}" alt=""
+                            class="w-[683px] h-[359px] mt-[20px]">
+                    </div>
+                    <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+                    <a class="next" onclick="plusSlides(1)">&#10095;</a>
+                </div>
 
                 {{-- Project Desc --}}
                 <div class="mt-[20px]">
@@ -92,4 +104,39 @@
         </div>
     </div>
     @include('components.footer')
+
+    <script>
+        let slideIndex = 1;
+        showSlides(slideIndex);
+
+        // Next/previous controls
+        function plusSlides(n) {
+            showSlides(slideIndex += n);
+        }
+
+        // Thumbnail image controls
+        function currentSlide(n) {
+            showSlides(slideIndex = n);
+        }
+
+        function showSlides(n) {
+            let i;
+            let slides = document.getElementsByClassName("mySlides");
+            let dots = document.getElementsByClassName("dot");
+            if (n > slides.length) {
+                slideIndex = 1
+            }
+            if (n < 1) {
+                slideIndex = slides.length
+            }
+            for (i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";
+            }
+            for (i = 0; i < dots.length; i++) {
+                dots[i].className = dots[i].className.replace(" active", "");
+            }
+            slides[slideIndex - 1].style.display = "block";
+            dots[slideIndex - 1].className += " active";
+        }
+    </script>
 @endsection

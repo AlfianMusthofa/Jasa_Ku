@@ -1,7 +1,7 @@
-<div class="footer container mx-auto my-[20px]">
+<div class="footer container mx-auto my-[20px] bg-[#000000] p-[14px] rounded-[8px]">
     <div class="row grid grid-cols-5 gap-[10px]">
-        <div class="col flex flex-col gap-[10px]">
-            <p class="text-[15px] font-semibold mb-[7px]">Categories</p>
+        <div class="col flex flex-col gap-[8px]">
+            <p class="text-[15px] font-semibold mb-[7px] text-white">Categories</p>
             <a href="#">Graphics & Design</a>
             <a href="#">Digital Marketing</a>
             <a href="#">Writing & Translation</a>
@@ -12,8 +12,8 @@
             <a href="#">Business</a>
             <a href="#">Photography</a>
         </div>
-        <div class="col flex flex-col gap-[10px]">
-            <p class="text-[15px] font-semibold mb-[7px]">About</p>
+        <div class="col flex flex-col gap-[8px]">
+            <p class="text-[15px] font-semibold mb-[7px] text-white">About</p>
             <a href="#">Careers</a>
             <a href="#">Press & Newss</a>
             <a href="#">Partnerships</a>
@@ -22,8 +22,8 @@
             <a href="#">Intelectual Property Claims</a>
             <a href="#">Investor Relations</a>
         </div>
-        <div class="col flex flex-col gap-[10px]">
-            <p class="text-[15px] font-semibold mb-[7px]">Support & Education</p>
+        <div class="col flex flex-col gap-[8px]">
+            <p class="text-[15px] font-semibold mb-[7px] text-white">Support & Education</p>
             <a href="#">Help & Support</a>
             <a href="#">Trust & Safety</a>
             <a href="#">Quality Guide</a>
@@ -32,8 +32,8 @@
             <a href="#">JasaKu Guide</a>
             <a href="#">Learn</a>
         </div>
-        <div class="col flex flex-col gap-[10px]">
-            <p class="text-[15px] font-semibold mb-[7px]">Community</p>
+        <div class="col flex flex-col gap-[8px]">
+            <p class="text-[15px] font-semibold mb-[7px] text-white">Community</p>
             <a href="#">Success Stories</a>
             <a href="#">Community Hub</a>
             <a href="#">Forus</a>
@@ -46,7 +46,7 @@
             <a href="#">Become a seller</a>
             <a href="#">Community Standars</a>
         </div>
-        <div class="col flex flex-col gap-[10px]">
+        <div class="col flex flex-col gap-[8px] text-white">
             <p class="text-[15px] font-semibold mb-[7px]">Business Solution</p>
             <a href="#">JasaKu Pro</a>
             <a href="#">Jasaku Certified</a>
@@ -66,10 +66,10 @@
             <p>©️Jasaku International Co. Ltd. 2024</p>
         </div>
         <div class="col flex gap-[20px]">
-            <img src="assets/icons/instagram.png" alt="" class="w-[20px]">
-            <img src="assets/icons/facebook.png" alt="" class="w-[20px]">
-            <img src="assets/icons/pinterest.png" alt="" class="w-[20px]">
-            <img src="assets/icons/twitter.png" alt="" class="w-[20px]">
+            <img src="{{ asset('assets/icons/instagram.png') }}" alt="" class="w-[20px]">
+            <img src="{{ asset('assets/icons/facebook.png') }}" alt="" class="w-[20px]">
+            <img src="{{ asset('assets/icons/pinterest.png') }}" alt="" class="w-[20px]">
+            <img src="{{ asset('assets/icons/twitter.png') }}" alt="" class="w-[20px]">
         </div>
     </div>
 </div>

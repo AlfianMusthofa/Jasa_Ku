@@ -63,7 +63,7 @@
     </div>
     <div class="services mt-[30px]">
         <div class="container mx-auto">
-            <p class="text-[20px] font-semibold">Popular Services</p>
+            <p class="text-[20px] font-semibold">explore the best services</p>
         </div>
         <div class="row container mx-auto py-[14px] flex gap-[10px]">
             @foreach ($products as $product)

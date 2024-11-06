@@ -27,7 +27,7 @@
                 </div>
 
                 {{-- Image --}}
-                <img src="{{ asset('storage/' . $project['image']) }}" alt="" class="mt-[20px] w-[683px] h-[455px]">
+                <img src="{{ asset('storage/' . $project['image']) }}" alt="" class="mt-[20px] w-[539px] h-[359px]">
 
                 {{-- Project Desc --}}
                 <div class="mt-[20px]">
@@ -36,7 +36,7 @@
                     </p>
                 </div>
                 <div class="pt-[20px]">
-                    <p class="text-[14px] font-medium">Industry</p>
+                    <p class="text-[14px] font-medium">Category</p>
                     <p class="text-gray-400">{{ $project['industry'] }}</p>
                 </div>
 

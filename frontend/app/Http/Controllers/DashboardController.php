@@ -37,12 +37,14 @@ class DashboardController extends Controller
          "project_cost" => $request->price,
          "project_description" => $request->description,
          "image" => $request->file('image')->store('post-images'),
+         "image2" => $request->file('image2')->store('post-images'),
          "phoneNumber" => $request->phoneNumber,
          "user_username" => $request->user_username,
          "user_description" => $request->user_description,
          "user_languages" => $request->user_languages,
          "user_location" => $request->user_location,
-         "user_memberSince" => $request->user_memberSince
+         "user_memberSince" => $request->user_memberSince,
+         "user_image" => $request->user_image
       ]);
 
       if ($response->successful()) {

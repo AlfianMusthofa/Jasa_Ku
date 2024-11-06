@@ -68,30 +68,35 @@
 
                 {{-- Project Duration --}}
                 <div class="row flex gap-[15px] items-center">
-                    <div class="col w-[242px]">
-                        <p class="text-[14px] font-medium">Project Duration</p>
+                    <div class="col">
+                        <div class="w-[242px]">
+                            <p class="text-[14px] mb-[3px] font-medium">Project Duration</p>
+                            <p class="text-[13px]">Choose the duration of your Project.</p>
+                        </div>
                     </div>
-                    {{-- <input type="text" name="duration" id="duration" class="border text-[14px] p-[5px]"> --}}
-                    <div class="mt-[10px] relative">
-                        <button class="text-[13px] border py-[7px] px-[50px] bg-white" id="durationBtn"
-                            type="button">Select
-                            duration</button>
-                        <ul class="absolute border w-full mt-[5px] bg-white hidden" id="durationList">
-                            <li class="text-[13px] pl-[10px] py-[5px] cursor-pointer hover:bg-slate-300 bg-white"
-                                data-value="1-7 days">
-                                1-7 days</li>
-                            <li class="text-[13px] pl-[10px] py-[5px] cursor-pointer hover:bg-slate-300 bg-white"
+                    <div class="w-full">
+                        <button type="button" class="text-[13px] border w-[300px] text-start pl-[10px] py-[7px]"
+                            id="durationBtn">Select duration</button>
+                        <ul class="absolute bg-white mt-[5px] border z-[1] max-h-[102px] overflow-y-auto hidden"
+                            id="durationList">
+                            <li class="text-[13px] pl-[10px] py-[7px] cursor-pointer hover:bg-slate-300 bg-white w-[300px]"
+                                data-value="1 - 7 days">
+                                1 - 7 days</li>
+                            <li class="text-[13px] pl-[10px] py-[7px] cursor-pointer hover:bg-slate-300 bg-white w-[300px]"
                                 data-value="2 weeks">
                                 2 weeks</li>
-                            <li class="text-[13px] pl-[10px] py-[5px] cursor-pointer hover:bg-slate-300 bg-white"
+                            <li class="text-[13px] pl-[10px] py-[7px] cursor-pointer hover:bg-slate-300 bg-white w-[300px]"
                                 data-value="3 weeks">
                                 3 weeks</li>
-                            <li class="text-[13px] pl-[10px] py-[5px] cursor-pointer hover:bg-slate-300 bg-white"
+                            <li class="text-[13px] pl-[10px] py-[7px] cursor-pointer hover:bg-slate-300 bg-white w-[300px]"
                                 data-value="1 month">
                                 1 month</li>
+                            <li class="text-[13px] pl-[10px] py-[7px] cursor-pointer hover:bg-slate-300 bg-white w-[300px]"
+                                data-value="> 1 month">
+                                > 1 month</li>
                         </ul>
+                        <input type="hidden" name="duration" id="duration">
                     </div>
-                    <input type="hidden" name="duration" id="duration">
                 </div>
 
                 {{-- Pricing --}}
@@ -126,7 +131,32 @@
                     </div>
                     <p class="text-[14px] font-medium">Images</p>
                 </div>
-                <input type="file" name="image" id="image">
+                <div class="flex items-center gap-[10px]">
+                    <div>
+                        <div class="hidden" id="previewContainer">
+                            <img src="{{ asset('assets/banner.jpg') }}" alt="" class="w-[100px] h-[100px]"
+                                id="previewImage">
+                        </div>
+                        <div class="boxAddImage w-[100px] h-[100px] flex flex-col items-center justify-center gap-[8px] cursor-pointer"
+                            id="addImage">
+                            <img src="{{ asset('assets/icons/plus.png') }}" alt="" class="w-[20px]">
+                            <p class="text-[11px]">Add image</p>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="hidden" id="previewContainer2">
+                            <img src="{{ asset('assets/banner.jpg') }}" alt="" class="w-[100px] h-[100px]"
+                                id="previewImage2">
+                        </div>
+                        <div class="boxAddImage w-[100px] h-[100px] flex flex-col items-center justify-center gap-[8px] cursor-pointer"
+                            id="addImage2">
+                            <img src="{{ asset('assets/icons/plus.png') }}" alt="" class="w-[20px]">
+                            <p class="text-[11px]">Add image</p>
+                        </div>
+                    </div>
+                    <input type="file" id="imageInput" name="image" accept="image/*" class="hidden">
+                    <input type="file" id="imageInput2" name="image2" accept="image/*" class="hidden">
+                </div>
             </div>
 
             <input type="hidden" name="user_id" value="{{ session('id') }}">
@@ -141,6 +171,8 @@
                 <button type="submit"
                     class="float-right text-[15px] px-[30px] py-[6px] bg-blue-400 rounded-[3px]">Save</button>
             </div>
+
+            <input type="hidden" name="user_image" value="{{ session('userImage') }}">
         </form>
     </div>
 
@@ -179,5 +211,61 @@
                 })
             })
         })
+
+        const imageInput = document.getElementById('imageInput');
+        const previewImage = document.getElementById('previewImage');
+        const previewContainer = document.getElementById('previewContainer');
+        const addImage = document.getElementById('addImage');
+
+        const imageInput2 = document.getElementById('imageInput2');
+        const previewImage2 = document.getElementById('previewImage2');
+        const previewContainer2 = document.getElementById('previewContainer2');
+        const addImage2 = document.getElementById('addImage2');
+
+        // Event listener untuk membuka dialog file saat kotak Add Image diklik
+        addImage.addEventListener('click', () => {
+            imageInput.click();
+        });
+
+        addImage2.addEventListener('click', () => {
+            imageInput2.click();
+        });
+
+        // Event listener untuk menampilkan preview gambar
+        imageInput.addEventListener('change', function() {
+            const file = this.files[0];
+
+            if (file) {
+                const reader = new FileReader();
+
+                reader.addEventListener('load', function() {
+                    // Tampilkan gambar preview
+                    previewImage.src = this.result;
+                    previewContainer.classList.remove('hidden');
+                    // Sembunyikan kotak Add Image
+                    addImage.classList.add('hidden');
+                });
+
+                reader.readAsDataURL(file);
+            }
+        });
+
+        imageInput2.addEventListener('change', function() {
+            const file = this.files[0];
+
+            if (file) {
+                const reader = new FileReader();
+
+                reader.addEventListener('load', function() {
+                    // Tampilkan gambar preview
+                    previewImage2.src = this.result;
+                    previewContainer2.classList.remove('hidden');
+                    // Sembunyikan kotak Add Image
+                    addImage2.classList.add('hidden');
+                });
+
+                reader.readAsDataURL(file);
+            }
+        });
     </script>
 @endsection

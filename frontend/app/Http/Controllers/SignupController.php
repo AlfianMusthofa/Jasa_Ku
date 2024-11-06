@@ -15,8 +15,16 @@ class SignupController extends Controller
          "password" => $request->password,
          "phoneNumber" => $request->phonenumber,
          "dateBorn" => $request->date,
-         "gender" => $request->gender
+         "gender" => $request->gender,
+         "user_image" => $request->image ?? "",
+         "user_description" => $request->desc ?? "",
+         "user_languages" => $request->lang ?? "",
+         "user_skills" => $request->skill ?? null,
+         "member_since" => $request->member ?? "2024-01-01",
+         "certified" => $request->certif ?? null,
+         "user_country" => $request->country ?? ""
       ]);
+
 
       if ($response->successful()) {
          return redirect('/service');

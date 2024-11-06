@@ -36,7 +36,6 @@
                             <p class="text-[13px]">Choose the category and sub-category most suitable for your Project.</p>
                         </div>
                     </div>
-                    {{-- <input type="text" name="industry" id="industry" class="border text-[14px] p-[5px]"> --}}
                     <div class="w-full">
                         <button type="button" class="text-[13px] border w-[300px] text-start pl-[10px] py-[7px]"
                             id="industryBtn">{{ $project['industry'] }}</button>
@@ -61,35 +60,41 @@
                                 data-value="Music & Audio">
                                 Music & Audio</li>
                         </ul>
-                        <input type="hidden" name="industry" id="industry">
+                        <input type="hidden" name="industry" id="industry" value="{{ $project['industry'] }}">
                     </div>
                 </div>
 
                 {{-- Project Duration --}}
                 <div class="row flex gap-[15px] items-center">
-                    <div class="col w-[242px]">
-                        <p class="text-[14px] font-medium">Project Duration</p>
+                    <div class="col">
+                        <div class="w-[242px]">
+                            <p class="text-[14px] mb-[3px] font-medium">Project Duration</p>
+                            <p class="text-[13px]">Choose the duration of your Project.</p>
+                        </div>
                     </div>
-                    {{-- <input type="text" name="duration" id="duration" class="border text-[14px] p-[5px]"> --}}
-                    <div class="mt-[10px] relative">
-                        <button class="text-[13px] border py-[7px] px-[50px] bg-white" id="durationBtn"
-                            type="button">{{ $project['project_duration'] }}</button>
-                        <ul class="absolute border w-full mt-[5px] bg-white hidden" id="durationList">
-                            <li class="text-[13px] pl-[10px] py-[5px] cursor-pointer hover:bg-slate-300 bg-white"
-                                data-value="1-7 days">
-                                1-7 days</li>
-                            <li class="text-[13px] pl-[10px] py-[5px] cursor-pointer hover:bg-slate-300 bg-white"
+                    <div class="w-full">
+                        <button type="button" class="text-[13px] border w-[300px] text-start pl-[10px] py-[7px]"
+                            id="durationBtn">{{ $project['project_duration'] }}</button>
+                        <ul class="absolute bg-white mt-[5px] border z-[1] max-h-[102px] overflow-y-auto hidden"
+                            id="durationList">
+                            <li class="text-[13px] pl-[10px] py-[7px] cursor-pointer hover:bg-slate-300 bg-white w-[300px]"
+                                data-value="1 - 7 days">
+                                1 - 7 days</li>
+                            <li class="text-[13px] pl-[10px] py-[7px] cursor-pointer hover:bg-slate-300 bg-white w-[300px]"
                                 data-value="2 weeks">
                                 2 weeks</li>
-                            <li class="text-[13px] pl-[10px] py-[5px] cursor-pointer hover:bg-slate-300 bg-white"
+                            <li class="text-[13px] pl-[10px] py-[7px] cursor-pointer hover:bg-slate-300 bg-white w-[300px]"
                                 data-value="3 weeks">
                                 3 weeks</li>
-                            <li class="text-[13px] pl-[10px] py-[5px] cursor-pointer hover:bg-slate-300 bg-white"
+                            <li class="text-[13px] pl-[10px] py-[7px] cursor-pointer hover:bg-slate-300 bg-white w-[300px]"
                                 data-value="1 month">
                                 1 month</li>
+                            <li class="text-[13px] pl-[10px] py-[7px] cursor-pointer hover:bg-slate-300 bg-white w-[300px]"
+                                data-value="> 1 month">
+                                > 1 month</li>
                         </ul>
+                        <input type="hidden" name="duration" id="duration" value="{{ $project['project_duration'] }}">
                     </div>
-                    <input type="hidden" name="duration" id="duration">
                 </div>
 
                 {{-- Pricing --}}
@@ -119,13 +124,28 @@
 
             {{-- Images --}}
             <div class="border p-[10px] flex flex-col gap-[24px] bg-white">
-                <div class="flex items-center gap-[10px]">
-                    <div class="w-[30px] h-[30px] flex items-center justify-center rounded-full bg-[#1dbf73] text-white">
-                        <p>3</p>
+                {{-- <input type="file" name="image" id="image"> --}}
+                <div class="border p-[10px] flex flex-col gap-[24px] bg-white">
+                    <div class="flex items-center gap-[10px]">
+                        <div
+                            class="w-[30px] h-[30px] flex items-center justify-center rounded-full bg-[#1dbf73] text-white">
+                            <p>3</p>
+                        </div>
+                        <p class="text-[14px] font-medium">Images</p>
                     </div>
-                    <p class="text-[14px] font-medium">Images</p>
+                    <div class="flex items-center gap-[10px]">
+                        <div class="" id="previewContainer">
+                            <img src="{{ asset('storage/' . $project['image']) }}" alt=""
+                                class="w-[100px] h-[100px]" id="previewImage">
+                        </div>
+                        <div class="boxAddImage w-[100px] h-[100px] flex flex-col items-center justify-center gap-[8px] cursor-pointer"
+                            id="addImage">
+                            <img src="{{ asset('assets/icons/plus.png') }}" alt="" class="w-[20px]">
+                            <p class="text-[11px]">Add image</p>
+                        </div>
+                        <input type="file" id="imageInput" name="image" accept="image/*" class="hidden">
+                    </div>
                 </div>
-                <input type="file" name="image" id="image">
             </div>
 
             <input type="hidden" name="user_id" value="{{ session('id') }}">
@@ -135,6 +155,7 @@
             <input type="hidden" name="user_languages" value="{{ session('userLanguages') }}">
             <input type="hidden" name="user_location" value="Indonesia">
             <input type="hidden" name="user_memberSince" value="2024">
+            <input type="hidden" name="user_image" value="{{ session('userImage') }}">
 
             <div>
                 <button type="submit"
@@ -178,5 +199,34 @@
                 })
             })
         })
+
+        const imageInput = document.getElementById('imageInput');
+        const previewImage = document.getElementById('previewImage');
+        const previewContainer = document.getElementById('previewContainer');
+        const addImage = document.getElementById('addImage');
+
+        // Event listener untuk membuka dialog file saat kotak Add Image diklik
+        addImage.addEventListener('click', () => {
+            imageInput.click();
+        });
+
+        // Event listener untuk menampilkan preview gambar
+        imageInput.addEventListener('change', function() {
+            const file = this.files[0];
+
+            if (file) {
+                const reader = new FileReader();
+
+                reader.addEventListener('load', function() {
+                    // Tampilkan gambar preview
+                    previewImage.src = this.result;
+                    previewContainer.classList.remove('hidden');
+                    // Sembunyikan kotak Add Image
+                    addImage.classList.add('hidden');
+                });
+
+                reader.readAsDataURL(file);
+            }
+        });
     </script>
 @endsection
