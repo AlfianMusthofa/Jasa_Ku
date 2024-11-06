@@ -68,18 +68,25 @@
         <div class="row container mx-auto py-[14px] flex gap-[10px]">
             @foreach ($products as $product)
                 <a href="/service/productDetail/{{ $product['_id'] }}">
-                    <div class="box border w-[205px] rounded-[7px]">
+                    <div class="box border w-[205px] rounded-[7px] min-h-[244px] max-h-[244px] shadow-md">
                         <img src="{{ asset('storage/' . $product['image']) }}" alt=""
                             class="rounded-tr-[7px] rounded-tl-[7px] h-[135px] w-[203px]">
                         <div class="p-[7px] mt-[5px]">
                             <p class="text-[14px] font-medium line-clamp-2">{{ $product['project_name'] }}</p>
-                            <p class="text-[12px] line-clamp-1 mt-[5px] text-gray-400">{{ $product['project_description'] }}
+                            <div class="flex items-center my-[1px] gap-[5px]">
+                                <img src="{{ asset('assets/icons/star.png') }}" alt="" class="w-[13px]">
+                                <div>
+                                    <label class="text-[11px]">4.8</label>
+                                    <label class="text-[11px]">(140)</label>
+                                </div>
+                            </div>
                             </p>
-                            <p class="text-[13px] font-medium text-end mt-[5px]">From Rp.{{ $product['project_cost'] }}</p>
+                            <p class="text-[12px] font-medium mt-[5px]">From Rp.{{ $product['project_cost'] }}</p>
                         </div>
                     </div>
                 </a>
             @endforeach
         </div>
     </div>
+    @include('components.footer')
 @endsection

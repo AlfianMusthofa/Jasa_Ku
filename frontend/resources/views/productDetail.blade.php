@@ -30,11 +30,11 @@
                 <div class="slideshow-container">
                     <div class="mySlides fade">
                         <img src="{{ asset('storage/' . $project['image']) }}" alt=""
-                            class="mt-[20px] w-[683px] h-[359px]">
+                            class="image1 mt-[20px] w-[683px] h-[359px]">
                     </div>
                     <div class="mySlides fade">
                         <img src="{{ asset('storage/' . $project['image2']) }}" alt=""
-                            class="w-[683px] h-[359px] mt-[20px]">
+                            class="image2 w-[683px] h-[359px] mt-[20px]">
                     </div>
                     <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
                     <a class="next" onclick="plusSlides(1)">&#10095;</a>
@@ -43,12 +43,12 @@
                 {{-- Project Desc --}}
                 <div class="mt-[20px]">
                     <p class="text-[16px] font-medium">About this project</p>
-                    <p class="text-[15px] mt-[5px] text-gray-400 pb-[20px] border-b">{{ $project['project_description'] }}
+                    <p class="text-[14px] mt-[5px] text-[#6b6480] pb-[20px] border-b">{{ $project['project_description'] }}
                     </p>
                 </div>
                 <div class="pt-[20px]">
-                    <p class="text-[14px] font-medium">Industry</p>
-                    <p class="text-gray-400">{{ $project['industry'] }}</p>
+                    <p class="text-[14px] font-medium">Category</p>
+                    <p class="text-[#6b6480]">{{ $project['industry'] }}</p>
                 </div>
 
                 {{-- Detail --}}
@@ -56,23 +56,23 @@
                     <div class="pb-[15px] border-b">
                         <div class="row">
                             <div>
-                                <p class="text-[16px] text-[#777981]">From</p>
+                                <p class="text-[15px] text-[#777981]">From</p>
                                 <p class="font-medium text-[14px]">Indonesia</p>
                             </div>
                             <div class="mt-[10px]">
-                                <p class="text-[16px] text-[#777981]">Languages</p>
+                                <p class="text-[15px] text-[#777981]">Languages</p>
                                 <p class="font-medium text-[14px]">Indonesia</p>
                             </div>
                         </div>
                         <div class="row">
                             <div class="mt-[10px]">
-                                <p class="text-[16px] text-[#777981]">Member since</p>
+                                <p class="text-[15px] text-[#777981]">Member since</p>
                                 <p class="font-medium text-[14px]">2024</p>
                             </div>
                         </div>
                     </div>
                     <div>
-                        <p class="text-[14px] pt-[15px] text-[#adaeb2]">{{ $project['user_description'] }}</p>
+                        <p class="text-[14px] pt-[15px] text-[#6b6480]">{{ $project['user_description'] }}</p>
                     </div>
                 </div>
             </div>
@@ -92,7 +92,8 @@
                         <img src="{{ asset('assets/icons/clock.png') }}" alt="" class="w-[14px]">
                         <p class="text-[13px] font-semibold">{{ $project['project_duration'] }}</p>
                     </div>
-                    <a href="#">
+                    <a
+                        href="https://wa.me/{{ $project['phoneNumber'] }}?text={{ urlencode('Hi, I want order "' . $project['project_name'] . '"') }}">
                         <div
                             class="orderBtn mt-[20px] text-[14px] p-[7px] flex gap-[7px] items-center justify-center font-medium rounded-[4px]">
                             <img src="{{ asset('assets/icons/whatsapp.png') }}" alt="" class="w-[20px] h-[20px]">

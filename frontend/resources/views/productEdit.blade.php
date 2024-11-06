@@ -124,27 +124,25 @@
 
             {{-- Images --}}
             <div class="border p-[10px] flex flex-col gap-[24px] bg-white">
-                {{-- <input type="file" name="image" id="image"> --}}
-                <div class="border p-[10px] flex flex-col gap-[24px] bg-white">
-                    <div class="flex items-center gap-[10px]">
-                        <div
-                            class="w-[30px] h-[30px] flex items-center justify-center rounded-full bg-[#1dbf73] text-white">
-                            <p>3</p>
-                        </div>
-                        <p class="text-[14px] font-medium">Images</p>
+                <div class="flex items-center gap-[10px]">
+                    <div class="w-[30px] h-[30px] flex items-center justify-center rounded-full bg-[#1dbf73] text-white">
+                        <p>3</p>
                     </div>
-                    <div class="flex items-center gap-[10px]">
-                        <div class="" id="previewContainer">
-                            <img src="{{ asset('storage/' . $project['image']) }}" alt=""
-                                class="w-[100px] h-[100px]" id="previewImage">
-                        </div>
-                        <div class="boxAddImage w-[100px] h-[100px] flex flex-col items-center justify-center gap-[8px] cursor-pointer"
-                            id="addImage">
-                            <img src="{{ asset('assets/icons/plus.png') }}" alt="" class="w-[20px]">
-                            <p class="text-[11px]">Add image</p>
-                        </div>
-                        <input type="file" id="imageInput" name="image" accept="image/*" class="hidden">
+                    <p class="text-[14px] font-medium">Images</p>
+                </div>
+                <div class="flex items-center gap-[10px]">
+                    <div class="boxAddImage w-[100px] h-[100px] flex flex-col items-center justify-center gap-[8px] cursor-pointer"
+                        id="addImage">
+                        <img src="{{ asset('storage/' . $project['image']) }}" alt="" class="w-[100px] h-[100px]"
+                            id="previewImage">
                     </div>
+                    <div class="boxAddImage2 w-[100px] h-[100px] flex flex-col items-center justify-center gap-[8px] cursor-pointer"
+                        id="addImage2">
+                        <img src="{{ asset('storage/' . $project['image2']) }}" alt=""
+                            class="w-[100px] h-[100px]" id="previewImage2">
+                    </div>
+                    <input type="file" id="imageInput" name="image" accept="image/*" class="hidden">
+                    <input type="file" id="imageInput2" name="image2" accept="image/*" class="hidden">
                 </div>
             </div>
 
@@ -202,31 +200,63 @@
 
         const imageInput = document.getElementById('imageInput');
         const previewImage = document.getElementById('previewImage');
-        const previewContainer = document.getElementById('previewContainer');
         const addImage = document.getElementById('addImage');
 
-        // Event listener untuk membuka dialog file saat kotak Add Image diklik
-        addImage.addEventListener('click', () => {
+        const imageInput2 = document.getElementById('imageInput2');
+        const previewImage2 = document.getElementById('previewImage2');
+        const addImage2 = document.getElementById('addImage2');
+
+        addImage.addEventListener('click', function() {
             imageInput.click();
         });
 
-        // Event listener untuk menampilkan preview gambar
-        imageInput.addEventListener('change', function() {
-            const file = this.files[0];
+        addImage2.addEventListener('click', function() {
+            imageInput2.click();
+        });
 
+        imageInput.addEventListener('change', function(event) {
+            const file = event.target.files[0];
             if (file) {
                 const reader = new FileReader();
-
-                reader.addEventListener('load', function() {
-                    // Tampilkan gambar preview
-                    previewImage.src = this.result;
-                    previewContainer.classList.remove('hidden');
-                    // Sembunyikan kotak Add Image
-                    addImage.classList.add('hidden');
-                });
-
+                reader.onload = function(e) {
+                    previewImage.src = e.target.result;
+                };
                 reader.readAsDataURL(file);
             }
         });
+
+        imageInput2.addEventListener('change', function(event) {
+            const file = event.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    previewImage2.src = e.target.result;
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+
+
+        //   addImage.addEventListener('click', () => {
+        //       imageInput.click();
+        //   });
+
+        //   imageInput.addEventListener('change', function() {
+        //       const file = this.files[0];
+
+        //       if (file) {
+        //           const reader = new FileReader();
+
+        //           reader.addEventListener('load', function() {
+        //               // Tampilkan gambar preview
+        //               previewImage.src = this.result;
+        //               previewContainer.classList.remove('hidden');
+        //               // Sembunyikan kotak Add Image
+        //               addImage.classList.add('hidden');
+        //           });
+
+        //           reader.readAsDataURL(file);
+        //       }
+        //   });
     </script>
 @endsection

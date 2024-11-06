@@ -35,6 +35,7 @@ Route::post('/dashboard/userEdit/{id}', [DashboardController::class, 'updateUser
 Route::delete('/delete/{id}', [ProductController::class, 'deleteProject']);
 Route::get('/projectEdit/{id}', [ProductController::class, 'updateProjectPage']);
 Route::post('/projectEdit/{id}', [ProductController::class, 'updateProject']);
+Route::post('/delete/{id}', [ProductController::class, 'deleteProject']);
 
 Route::get('/loginPage', function () {
    return view('login', [

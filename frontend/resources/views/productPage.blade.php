@@ -27,7 +27,19 @@
                 </div>
 
                 {{-- Image --}}
-                <img src="{{ asset('storage/' . $project['image']) }}" alt="" class="mt-[20px] w-[539px] h-[359px]">
+                {{-- <img src="{{ asset('storage/' . $project['image']) }}" alt="" class="mt-[20px] w-full h-[359px]"> --}}
+                <div class="slideshow-container">
+                    <div class="mySlides fade">
+                        <img src="{{ asset('storage/' . $project['image']) }}" alt=""
+                            class="mt-[20px] w-[683px] h-[359px]">
+                    </div>
+                    <div class="mySlides fade">
+                        <img src="{{ asset('storage/' . $project['image2']) }}" alt=""
+                            class="w-[683px] h-[359px] mt-[20px]">
+                    </div>
+                    <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+                    <a class="next" onclick="plusSlides(1)">&#10095;</a>
+                </div>
 
                 {{-- Project Desc --}}
                 <div class="mt-[20px]">
@@ -41,21 +53,21 @@
                 </div>
 
                 {{-- Detail --}}
-                <div class="mt-[20px] border p-[10px]">
+                <div class="userDetail mt-[20px] p-[10px]">
                     <div class="pb-[15px] border-b">
                         <div class="row">
                             <div>
-                                <p class="text-[16px] text-[#777981]">From</p>
+                                <p class="text-[15px] text-[#777981]">From</p>
                                 <p class="font-medium text-[14px]">{{ session('userCountry') }}</p>
                             </div>
                             <div class="mt-[10px]">
-                                <p class="text-[16px] text-[#777981]">Languages</p>
+                                <p class="text-[15px] text-[#777981]">Languages</p>
                                 <p class="font-medium text-[14px]">{{ session('userLanguages') }}</p>
                             </div>
                         </div>
                         <div class="row">
                             <div class="mt-[10px]">
-                                <p class="text-[16px] text-[#777981]">Member since</p>
+                                <p class="text-[15px] text-[#777981]">Member since</p>
                                 <p class="font-medium text-[14px]">2024</p>
                             </div>
                         </div>
@@ -67,9 +79,11 @@
             </div>
             {{-- Kanan --}}
             <div class="col w-[500px]">
-                <div class="mb-[10px]">
+                <div class="mb-[10px] flex gap-[10px]">
                     <a href="/projectEdit/{{ $project['_id'] }}"><img src="{{ asset('assets/icons/pen.png') }}"
                             alt="" class="w-[25px]"></a>
+                    <a href="/delete/{{ $project['_id'] }}"><img src="{{ asset('assets/icons/trash-bin.png') }}"
+                            alt="" class="w-[25px]" onclick="return confirn('Are you sure ?')"></a>
                 </div>
                 <div class="buyBox p-[10px]">
                     <div class="flex justify-between items-center">
@@ -97,4 +111,39 @@
         </div>
     </div>
     @include('components.footer')
+
+    <script>
+        let slideIndex = 1;
+        showSlides(slideIndex);
+
+        // Next/previous controls
+        function plusSlides(n) {
+            showSlides(slideIndex += n);
+        }
+
+        // Thumbnail image controls
+        function currentSlide(n) {
+            showSlides(slideIndex = n);
+        }
+
+        function showSlides(n) {
+            let i;
+            let slides = document.getElementsByClassName("mySlides");
+            let dots = document.getElementsByClassName("dot");
+            if (n > slides.length) {
+                slideIndex = 1
+            }
+            if (n < 1) {
+                slideIndex = slides.length
+            }
+            for (i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";
+            }
+            for (i = 0; i < dots.length; i++) {
+                dots[i].className = dots[i].className.replace(" active", "");
+            }
+            slides[slideIndex - 1].style.display = "block";
+            dots[slideIndex - 1].className += " active";
+        }
+    </script>
 @endsection
