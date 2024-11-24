@@ -26,7 +26,21 @@ class SignupController extends Controller
       ]);
 
 
+
       if ($response->successful()) {
+
+         $userData = $response->json();
+
+         // $request->session()->put('username', $userData['user']['username']);
+         // $request->session()->put('id', $userData['user']['id']);
+         // $request->session()->put('userDescription', $userData['user']['description']);
+         // $request->session()->put('userImage', $userData['user']['image']);
+         // $request->session()->put('userSkills', $userData['user']['skills']);
+         // $request->session()->put('userLanguages', $userData['user']['languages']);
+         // $request->session()->put('memberYear', $userData['user']['memberSince']);
+         // $request->session()->put('phoneNumber', $userData['user']['phoneNumber']);
+         // $request->session()->put('userCountry', $userData['user']['country']);
+
          return redirect('/service');
       } else {
          return $response->status();

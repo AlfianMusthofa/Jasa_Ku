@@ -78,7 +78,6 @@
                 </div>
             </div>
             <div class="col p-[15px]">
-                <p class="text-[15px]">Change Password</p>
                 <div class="border p-[15px] flex flex-col gap-[10px] mt-[10px]">
                     <div>
                         <p class="text-[12px]">Current Password</p>

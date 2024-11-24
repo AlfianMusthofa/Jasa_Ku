@@ -267,5 +267,22 @@
                 reader.readAsDataURL(file);
             }
         });
+
+        const priceInput = document.getElementById('price');
+
+        priceInput.addEventListener('input', (e) => {
+            // Remove all non-numeric characters
+            let value = e.target.value.replace(/[^0-9]/g, '');
+
+            // Add dots every three digits
+            value = value.replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+
+            e.target.value = value;
+        });
+
+        priceInput.addEventListener('blur', (e) => {
+            // Ensure value remains properly formatted when input loses focus
+            e.target.value = e.target.value.replace(/[^0-9.]/g, '');
+        });
     </script>
 @endsection

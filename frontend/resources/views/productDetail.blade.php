@@ -57,11 +57,11 @@
                         <div class="row">
                             <div>
                                 <p class="text-[15px] text-[#777981]">From</p>
-                                <p class="font-medium text-[14px]">Indonesia</p>
+                                <p class="font-medium text-[14px]">{{ $project['user_location'] }}</p>
                             </div>
                             <div class="mt-[10px]">
                                 <p class="text-[15px] text-[#777981]">Languages</p>
-                                <p class="font-medium text-[14px]">Indonesia</p>
+                                <p class="font-medium text-[14px]">{{ $project['user_languages'][0] }}</p>
                             </div>
                         </div>
                         <div class="row">
@@ -78,7 +78,7 @@
             </div>
             {{-- Kanan --}}
             <div class="col w-[500px]">
-                <div class="buyBox p-[10px] sticky">
+                <div class="buyBox p-[10px] border shadow-md sticky top-[20px]">
                     <div class="flex justify-between items-center">
                         <div>
                             <p class="text-[14px] font-medium">Basic</p>

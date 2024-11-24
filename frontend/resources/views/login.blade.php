@@ -1,7 +1,7 @@
 @extends('layouts.main')
 
 @section('container')
-    <div class="bglogin w-[100%] h-[100vh] flex justify-center items-center">
+    {{-- <div class="bglogin w-[100%] h-[100vh] flex justify-center items-center">
         <div class="bg-[#00ABE4] p-[16px] shadow-md rounded-tl-[10px] rounded-br-[10px] w-[370px] flex flex-col">
             <p class="font-semibold text-[22px] text-center text-white">Login</p>
             <p class="text-[13px] mt-[5px] text-center text-white">Hey, Enter your details to get sign In<br>to your account
@@ -47,6 +47,37 @@
                     class="font-semibold">Sign
                     Up</a>
             </p>
+        </div>
+    </div> --}}
+
+    <div class="w-[100%] h-[100vh] flex justify-center items-center" id="bglogin">
+        <div class="flex items-center shadow-md rounded-[5px]" id="formlogin">
+            <div id="bglogin2">
+            </div>
+            <div class="px-[50px] w-[400px]">
+                <p class="text-[26px] font-semibold mb-[7px]">Login</p>
+                <p class="text-[13px] mb-[35px]">Welcome back! Please login to your<br>account.</p>
+                <form action="/login" method="post" class="flex flex-col gap-[14px]">
+                    @csrf
+                    <div class="flex flex-col gap-[5px]">
+                        <label for="username" class="text-[12px]">Username</label>
+                        <input type="text" name="username" id="username"
+                            class="border text-[14px] p-[8px] rounded-[3px] outline-none border-gray-400" required>
+                    </div>
+                    <div class="flex flex-col gap-[5px]">
+                        <label for="password" class="text-[12px]">Password</label>
+                        <input type="password" name="password" id="password"
+                            class="border text-[14px] p-[8px] rounded-[3px] outline-none border-gray-400">
+                    </div>
+                    <div class="text-[11px] mt-[18px] text-end">
+                        <a href="#">Forget Password?</a>
+                    </div>
+                    <button type="submit"
+                        class="text-[13px] py-[11px] mt-[15px] rounded-[3px] bg-[#8652ff] text-white">Login</button>
+                </form>
+                <p class="text-[11px] mt-[23px]">New User? <a href="/signup" class="font-semibold text-[#8652ff]">SignUp</a>
+                </p>
+            </div>
         </div>
     </div>
 @endsection

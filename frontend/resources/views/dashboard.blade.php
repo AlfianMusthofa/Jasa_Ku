@@ -11,7 +11,7 @@
                     <div class="col bg-white">
                         <div class="border flex flex-col justify-center items-center p-[15px]">
                             <img src="{{ session('userImage') ? asset('storage/' . session('userImage')) : asset('assets/icons/user.png') }}"
-                                alt="" class="border w-[150px] h-[150px] rounded-full">
+                                alt="" class="border rounded-full" id="potoProfile">
                             <div class="flex items-center text-[17px] my-[20px]">
                                 <p>@</p>
                                 <p>{{ session('username') }}</p>

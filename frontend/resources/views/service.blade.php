@@ -4,13 +4,13 @@
     <div class="bg-[#1B1F22]">
         <div class="container mx-auto text-[13px] bg-[#1B1F22] text-white py-[9px] flex justify-between items-center">
             <div>
-                <p>Indonesia</p>
+                <p>English</p>
             </div>
             <div class="flex gap-[20px]">
-                <a href="#">Tentang JasaKu</a>
-                <a href="#">Mitra JasaKu</a>
+                <a href="#">About JasaKu</a>
+                <a href="#">JasaKu Partner</a>
                 <a href="#">JasaKu Care</a>
-                <a href="#">Edukasi Mitra</a>
+                <a href="#">Partner Education</a>
             </div>
         </div>
     </div>
@@ -20,8 +20,13 @@
             <div class="content flex flex-col w-[500px] gap-[20px]">
                 <p class="text-center text-[35px] font-medium text-white">Find the right freelance<br>service, right away
                 </p>
-                <input type="search" name="" id="" class="p-[12px] text-[15px] rounded-md"
-                    placeholder="Search for any service...">
+                <div class="bg-white flex items-center p-[4px] gap-[5px] pl-[10px] rounded-[3px]">
+                    <img src="{{ asset('assets/icons/search-interface-symbol.png') }}" class="w-[20px]">
+                    <input type="search" name="search" id="search"
+                        class="w-full py-[5px] outline-none text-[14px] pl-[10px]" placeholder="Search here...">
+                    <button type="submit"
+                        class="text-[13px] text-white px-[15px] py-[8px] rounded-[3px] bg-[#00ABE4]">Search</button>
+                </div>
             </div>
         </div>
     </div>
@@ -62,30 +67,119 @@
         </div>
     </div>
     <div class="services mt-[30px]">
-        <div class="container mx-auto">
-            <p class="text-[20px] font-semibold">explore the best services</p>
-        </div>
-        <div class="row container mx-auto py-[14px] flex gap-[10px]">
-            @foreach ($products as $product)
-                <a href="/service/productDetail/{{ $product['_id'] }}">
-                    <div class="box border w-[205px] rounded-[7px] min-h-[244px] max-h-[244px] shadow-md">
-                        <img src="{{ asset('storage/' . $product['image']) }}" alt=""
-                            class="rounded-tr-[7px] rounded-tl-[7px] h-[135px] w-[203px]">
-                        <div class="p-[7px] mt-[5px]">
-                            <p class="text-[14px] font-medium line-clamp-2">{{ $product['project_name'] }}</p>
-                            <div class="flex items-center my-[1px] gap-[5px]">
-                                <img src="{{ asset('assets/icons/star.png') }}" alt="" class="w-[13px]">
-                                <div>
-                                    <label class="text-[11px]">4.8</label>
-                                    <label class="text-[11px]">(140)</label>
+        <div>
+            <div class="container mx-auto flex justify-between items-center">
+                <p class="text-[23px] font-semibold">Explore the best services</p>
+                <a href="#" class="border px-[18px] text-[14px] py-[4px] rounded-[3px]">See all</a>
+            </div>
+            <div class="row container mx-auto py-[14px] flex gap-[10px] overflow-x-scroll overflow-hidden flex-nowrap">
+                @foreach ($products as $product)
+                    <a href="/service/productDetail/{{ $product['_id'] }}">
+                        <div class="box w-[205px] rounded-[7px] min-h-[244px] max-h-[244px]">
+                            <img src="{{ asset('storage/' . $product['image']) }}" alt=""
+                                class="rounded-tr-[7px] rounded-tl-[7px] h-[135px] w-[203px]">
+                            <div class="p-[7px] mt-[5px]">
+                                <p class="text-[14px] font-medium line-clamp-2">{{ $product['project_name'] }}</p>
+                                <div class="flex items-center my-[1px] gap-[5px]">
+                                    <img src="{{ asset('assets/icons/star.png') }}" alt="" class="w-[13px]">
+                                    <div>
+                                        <label class="text-[11px]">4.8</label>
+                                        <label class="text-[11px]">(140)</label>
+                                    </div>
                                 </div>
+                                </p>
+                                <p class="text-[14px] font-semibold mt-[5px]">From Rp.{{ $product['project_cost'] }}</p>
                             </div>
-                            </p>
-                            <p class="text-[12px] font-medium mt-[5px]">From Rp.{{ $product['project_cost'] }}</p>
                         </div>
-                    </div>
-                </a>
-            @endforeach
+                    </a>
+                @endforeach
+            </div>
+        </div>
+        <div class="mt-[20px]">
+            <div class="container mx-auto flex justify-between items-center">
+                <p class="text-[23px] font-semibold">Finance</p>
+                <a href="#" class="border px-[18px] text-[14px] py-[4px] rounded-[3px]">See all</a>
+            </div>
+            <div class="row container mx-auto py-[14px] flex gap-[10px] overflow-x-scroll overflow-hidden flex-nowrap">
+                @foreach ($finances as $finance)
+                    <a href="/service/productDetail/{{ $finance['_id'] }}">
+                        <div class="box w-[205px] rounded-[7px] min-h-[244px] max-h-[244px]">
+                            <img src="{{ asset('storage/' . $finance['image']) }}" alt=""
+                                class="rounded-tr-[7px] rounded-tl-[7px] h-[135px] w-[203px]">
+                            <div class="p-[7px] mt-[5px]">
+                                <p class="text-[14px] font-medium line-clamp-2">{{ $finance['project_name'] }}</p>
+                                <div class="flex items-center my-[1px] gap-[5px]">
+                                    <img src="{{ asset('assets/icons/star.png') }}" alt="" class="w-[13px]">
+                                    <div>
+                                        <label class="text-[11px]">4.8</label>
+                                        <label class="text-[11px]">(140)</label>
+                                    </div>
+                                </div>
+                                </p>
+                                <p class="text-[14px] font-semibold mt-[5px]">From Rp.{{ $finance['project_cost'] }}</p>
+                            </div>
+                        </div>
+                    </a>
+                @endforeach
+            </div>
+        </div>
+        <div class="mt-[20px]">
+            <div class="container mx-auto flex justify-between items-center">
+                <p class="text-[23px] font-semibold">Programming & Tech</p>
+                <a href="#" class="border px-[18px] text-[14px] py-[4px] rounded-[3px]">See all</a>
+            </div>
+            <div class="row container mx-auto py-[14px] flex gap-[10px] overflow-x-scroll overflow-hidden flex-nowrap">
+                @foreach ($programmings as $programming)
+                    <a href="/service/productDetail/{{ $programming['_id'] }}">
+                        <div class="box w-[205px] rounded-[7px] min-h-[244px] max-h-[244px]">
+                            <img src="{{ asset('storage/' . $programming['image']) }}" alt=""
+                                class="rounded-tr-[7px] rounded-tl-[7px] h-[135px] w-[203px]">
+                            <div class="p-[7px] mt-[5px]">
+                                <p class="text-[14px] font-medium line-clamp-2">{{ $programming['project_name'] }}</p>
+                                <div class="flex items-center my-[1px] gap-[5px]">
+                                    <img src="{{ asset('assets/icons/star.png') }}" alt="" class="w-[13px]">
+                                    <div>
+                                        <label class="text-[11px]">4.8</label>
+                                        <label class="text-[11px]">(140)</label>
+                                    </div>
+                                </div>
+                                </p>
+                                <p class="text-[14px] font-semibold mt-[5px]">From Rp.{{ $programming['project_cost'] }}
+                                </p>
+                            </div>
+                        </div>
+                    </a>
+                @endforeach
+            </div>
+        </div>
+        <div class="mt-[20px]">
+            <div class="container mx-auto flex justify-between items-center">
+                <p class="text-[23px] font-semibold">Video & Animation</p>
+                <a href="#" class="border px-[18px] text-[14px] py-[4px] rounded-[3px]">See all</a>
+            </div>
+            <div class="row container mx-auto py-[14px] flex gap-[10px] overflow-x-scroll overflow-hidden flex-nowrap">
+                @foreach ($videos as $video)
+                    <a href="/service/productDetail/{{ $video['_id'] }}">
+                        <div class="box w-[205px] rounded-[7px] min-h-[244px] max-h-[244px]">
+                            <img src="{{ asset('storage/' . $video['image']) }}" alt=""
+                                class="rounded-tr-[7px] rounded-tl-[7px] h-[135px] w-[203px]">
+                            <div class="p-[7px] mt-[5px]">
+                                <p class="text-[14px] font-medium line-clamp-2">{{ $video['project_name'] }}</p>
+                                <div class="flex items-center my-[1px] gap-[5px]">
+                                    <img src="{{ asset('assets/icons/star.png') }}" alt="" class="w-[13px]">
+                                    <div>
+                                        <label class="text-[11px]">4.8</label>
+                                        <label class="text-[11px]">(140)</label>
+                                    </div>
+                                </div>
+                                </p>
+                                <p class="text-[14px] font-semibold mt-[5px]">From Rp.{{ $video['project_cost'] }}
+                                </p>
+                            </div>
+                        </div>
+                    </a>
+                @endforeach
+            </div>
         </div>
     </div>
     @include('components.footer')

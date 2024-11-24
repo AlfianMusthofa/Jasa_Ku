@@ -65,11 +65,10 @@ class DashboardController extends Controller
    {
 
       $oldImage = session('userImage');
+      $imagePath = $oldImage;
 
       if ($request->hasFile('image')) {
-         $oldImage = $request->file('image')->store('post-images');
-      } else {
-         $imagePath = $oldImage;
+         $imagePath = $request->file('image')->store('post-images');
       }
 
       $response = Http::patch('http://localhost:3000/users/' . session('id'), [
