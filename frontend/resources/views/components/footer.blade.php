@@ -1,4 +1,4 @@
-<div class="bg-[#000000]">
+<div class="bg-[#00abe4]">
     <div class="footer container mx-auto mt-[20px] p-[14px] rounded-[8px]">
         <div class="row grid grid-cols-5 gap-[10px] py-[15px]">
             <div class="col flex flex-col gap-[8px]">
@@ -61,17 +61,10 @@
         </div>
     </div>
 </div>
-<div class=" border">
-    <div class="row container mx-auto py-[20px] flex justify-between items-center">
+<div class="bg-[#00377f] text-white">
+    <div class="row container mx-auto py-[15px] flex justify-center items-center">
         <div class="col flex text-[14px] gap-[20px]">
-            <h1>JasaKu.com</h1>
-            <p>©️Jasaku International Co. Ltd. 2024</p>
-        </div>
-        <div class="col flex gap-[20px]">
-            <img src="{{ asset('assets/icons/instagram.png') }}" alt="" class="w-[20px]">
-            <img src="{{ asset('assets/icons/facebook.png') }}" alt="" class="w-[20px]">
-            <img src="{{ asset('assets/icons/pinterest.png') }}" alt="" class="w-[20px]">
-            <img src="{{ asset('assets/icons/twitter.png') }}" alt="" class="w-[20px]">
+            <p>2024 - Jasaku.com</p>
         </div>
     </div>
 </div>

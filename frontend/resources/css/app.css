@@ -8,6 +8,7 @@
 * {
    font-family: 'Poppins', sans-serif;
    scroll-behavior: smooth;
+   animation: all ease-in-out 0.3s;
 }
 
 .active {
@@ -26,7 +27,7 @@
 }
 
 .banner {
-   background: url(C:\x_code\Jasa_ku\frontend\public\assets\banner.jpg);
+   background: url(C:\x_code\Jasa_ku\frontend\public\assets\hero.png);
    height: 450px;
    background-size: cover;
    background-position: center;
@@ -239,4 +240,26 @@
    height: 150px;
    background-size: cover;
    background-position: center;
+}
+
+#seeAll-btn {
+   border: 1px solid #004aad;
+   color: #004aad;
+}
+
+#seeAll-btn:hover {
+   background-color: #004aad;
+   color: white;
+   border: 1px solid white;
+}
+
+#user-image {
+   height: 60px;
+   width: 60px;
+   background-position: center;
+   background-size: cover;
+}
+
+#bg-content {
+   background-color: rgba(255, 255, 255, 0.3);
 }

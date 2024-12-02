@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AllCategoryController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\homeController;
 use App\Http\Controllers\LoginController;
@@ -36,6 +37,7 @@ Route::delete('/delete/{id}', [ProductController::class, 'deleteProject']);
 Route::get('/projectEdit/{id}', [ProductController::class, 'updateProjectPage']);
 Route::post('/projectEdit/{id}', [ProductController::class, 'updateProject']);
 Route::post('/delete/{id}', [ProductController::class, 'deleteProject']);
+Route::get('/allCategory', [AllCategoryController::class, 'index']);
 
 Route::get('/loginPage', function () {
    return view('login', [

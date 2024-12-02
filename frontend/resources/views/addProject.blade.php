@@ -61,6 +61,9 @@
                             <li class="text-[13px] pl-[10px] py-[7px] cursor-pointer hover:bg-slate-300 bg-white w-[300px]"
                                 data-value="Music & Audio">
                                 Music & Audio</li>
+                            <li class="text-[13px] pl-[10px] py-[7px] cursor-pointer hover:bg-slate-300 bg-white w-[300px]"
+                                data-value="Digital Illustration">
+                                Digital Illustration</li>
                         </ul>
                         <input type="hidden" name="industry" id="industry">
                     </div>

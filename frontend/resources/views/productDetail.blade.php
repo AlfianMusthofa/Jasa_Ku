@@ -11,8 +11,8 @@
                     <p class="text-[25px] font-medium">{{ $project['project_name'] }}</p>
                     <div class="row flex gap-[10px] items-center">
                         <div class="col">
-                            <img src="{{ asset('storage/' . $project['user_image']) }}" alt=""
-                                class="w-[60px] h-[60px] rounded-full">
+                            <img src="{{ asset('storage/' . $project['user_image']) }}" class="w-[60px] h-[60px] rounded-full"
+                                id="user-image">
                         </div>
                         <div class="col">
                             <p class="text-[16px]">{{ $project['user_username'] }}</p>
@@ -78,14 +78,14 @@
             </div>
             {{-- Kanan --}}
             <div class="col w-[500px]">
-                <div class="buyBox p-[10px] border shadow-md sticky top-[20px]">
+                <div class="buyBox p-[13px] border shadow-md sticky top-[20px]">
                     <div class="flex justify-between items-center">
                         <div>
                             <p class="text-[14px] font-medium">Basic</p>
                             <p class="text-[#adaeb2] text-[15px]">{{ $project['industry'] }}</p>
                         </div>
                         <div>
-                            <p>Rp.{{ $project['project_cost'] }}</p>
+                            <p class="font-semibold text-[#251E21]">Rp.{{ $project['project_cost'] }}</p>
                         </div>
                     </div>
                     <div class="row mt-[12px] flex items-center gap-[8px]">
@@ -95,9 +95,8 @@
                     <a
                         href="https://wa.me/{{ $project['phoneNumber'] }}?text={{ urlencode('Hi, I want order "' . $project['project_name'] . '"') }}">
                         <div
-                            class="orderBtn mt-[20px] text-[14px] p-[7px] flex gap-[7px] items-center justify-center font-medium rounded-[4px]">
-                            <img src="{{ asset('assets/icons/whatsapp.png') }}" alt="" class="w-[20px] h-[20px]">
-                            <p>Order by WhatsApp</p>
+                            class="border border-black rounded-[4px] text-[15px] font-medium text-center py-[7px] mt-[20px]">
+                            <p class="text-[#251E21]">Contact Me</p>
                         </div>
                     </a>
                 </div>

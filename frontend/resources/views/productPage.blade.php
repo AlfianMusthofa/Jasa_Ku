@@ -82,8 +82,13 @@
                 <div class="mb-[10px] flex gap-[10px]">
                     <a href="/projectEdit/{{ $project['_id'] }}"><img src="{{ asset('assets/icons/pen.png') }}"
                             alt="" class="w-[25px]"></a>
-                    <a href="/delete/{{ $project['_id'] }}"><img src="{{ asset('assets/icons/trash-bin.png') }}"
-                            alt="" class="w-[25px]" onclick="return confirn('Are you sure ?')"></a>
+                    <form action="/delete/{{ $project['_id'] }}" method="post">
+                        @method('delete')
+                        @csrf
+                        <button onclick="return confirm('Are you sure ?')">
+                            <img src="{{ asset('assets/icons/trash-bin.png') }}" alt="" class="w-[25px]">
+                        </button>
+                    </form>
                 </div>
                 <div class="buyBox p-[10px]">
                     <div class="flex justify-between items-center">

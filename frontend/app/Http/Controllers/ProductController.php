@@ -34,8 +34,6 @@ class ProductController extends Controller
    {
       $response = Http::delete('http://localhost:3000/gigs/' . $id);
 
-      ddd($response);
-
       if ($response->successful()) {
          return redirect('/dashboard');
       } else {

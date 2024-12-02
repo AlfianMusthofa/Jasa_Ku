@@ -104,7 +104,7 @@
                             <a href="/dashboard/productPage/{{ $project['_id'] }}">
                                 <div class="gig col border flex gap-[5px] flex-col bg-white p-[7px] min-h-[187px]">
                                     <div class="row flex gap-[10px] items-center">
-                                        <img src="{{ asset('storage/' . $project['image']) }}" alt="">
+                                        <img src="{{ asset('storage/' . $project['image']) }}" id="projectImage">
                                         {{-- Project title --}}
                                         <p class="text-[14px] font-medium">{{ $project['project_name'] }}</p>
                                     </div>
